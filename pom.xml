@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fiveware</groupId>
 	<artifactId>fiveware-test</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>Test Parent</name>
 
@@ -11,44 +11,142 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<javax.inject.version>1</javax.inject.version>
+		<springframework.version>4.0.6.RELEASE</springframework.version>
+		<mysql.connector.version>5.1.31</mysql.connector.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
+		<spring.version>4.3.0.RELEASE</spring.version>
+		<!-- dependencias -->
+		<c3p0.version>0.9.1.2</c3p0.version>
+		<cdi.version>1.1</cdi.version>
+		<commonsLang3.version>3.4</commonsLang3.version>
+		<guava.version>19.0</guava.version>
+		<jee.version>7.0</jee.version>
+		<junit.version>4.12</junit.version>
 	</properties>
 
-	<dependencies>
+	<modules>
+		<module>fiveware-test-service</module>
+		<module>fiveware-test-web</module>
+		<module>fiveware-test-model</module>
+	</modules>
 
-		<!-- JavaX -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>${javax.inject.version}</version>
-		</dependency>
+	<dependencyManagement>
+		<dependencies>
 
-	</dependencies>
 
+
+		
+
+		
+			<!-- JavaX -->
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>${javax.inject.version}</version>
+			</dependency>
+
+			
+		
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+		
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-web</artifactId>
+			    <version>${spring.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			
+						
+			<!-- Database -->
+
+			<!-- Hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<!-- MySQL -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.connector.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
 	<build>
-
+	
 		<plugins>
-
-			<plugin>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
-			</plugin>
-
+			</plugin>			
 		</plugins>
-
+		
+		<pluginManagement>
+			<plugins>
+				<plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-war-plugin</artifactId>
+			        <version>2.6</version>
+				</plugin>
+				
+							
+			</plugins>
+		</pluginManagement>
+	
 	</build>
+	
 
+	
 </project>
